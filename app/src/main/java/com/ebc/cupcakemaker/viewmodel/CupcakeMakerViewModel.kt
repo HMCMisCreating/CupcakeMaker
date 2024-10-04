@@ -34,7 +34,7 @@ class CupcakeMakerViewModel: ViewModel() {
 
 
     //fx para calcular total de la orden
-    fun calculateTotalAmount() {
+    private fun calculateTotalAmount() {
         val quantity = state.quantity;
         val price = state.price;
         val total = quantity * price;
