@@ -13,6 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
+import com.ebc.cupcakemaker.view.components.cupcakewizard.StartOrderScreen
+import com.ebc.cupcakemaker.viewmodel.CupcakeMakerViewModel
 
 // Crear función para el topbar
 
@@ -32,7 +34,7 @@ fun CupcakeAppBar() {
 
 // Crear el nav manager
 @Composable
-fun NavigationManager() {
+fun NavigationManager(cupcakeMakerViewModel: CupcakeMakerViewModel) {
     val navController = rememberNavController();
 
     Scaffold(
@@ -42,7 +44,7 @@ fun NavigationManager() {
     ) {
         NavHost(
             navController = navController,
-            startDestination = "Home",
+            startDestination = "Inicio",
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
@@ -50,9 +52,13 @@ fun NavigationManager() {
             composable("Home") {
                 Text(text = "Placeholder Home")
             }
+            composable ("Inicio") {
+                StartOrderScreen(navController, cupcakeMakerViewModel)
+                }
+            }
         }
     }
 
-}
+
 
 
