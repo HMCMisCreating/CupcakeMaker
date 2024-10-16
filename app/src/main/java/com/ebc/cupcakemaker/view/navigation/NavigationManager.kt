@@ -13,6 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
+import com.ebc.cupcakemaker.enumerators.ViewIDs
+import com.ebc.cupcakemaker.view.components.cupcakewizard.SelectFlavorScreen
 import com.ebc.cupcakemaker.view.components.cupcakewizard.StartOrderScreen
 import com.ebc.cupcakemaker.viewmodel.CupcakeMakerViewModel
 
@@ -44,7 +46,7 @@ fun NavigationManager(cupcakeMakerViewModel: CupcakeMakerViewModel) {
     ) {
         NavHost(
             navController = navController,
-            startDestination = "Inicio",
+            startDestination = ViewIDs.Start.id,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
@@ -52,9 +54,12 @@ fun NavigationManager(cupcakeMakerViewModel: CupcakeMakerViewModel) {
             composable("Home") {
                 Text(text = "Placeholder Home")
             }
-            composable ("Inicio") {
+            composable (ViewIDs.Start.id) {
                 StartOrderScreen(navController, cupcakeMakerViewModel)
                 }
+            composable (ViewIDs.Flavors.id) {
+                SelectFlavorScreen(navController, cupcakeMakerViewModel)
+            }
             }
         }
     }

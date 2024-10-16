@@ -1,13 +1,10 @@
 package com.ebc.cupcakemaker.view.components.cupcakewizard
 
-import android.media.Image
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
@@ -20,6 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ebc.cupcakemaker.R
+import com.ebc.cupcakemaker.enumerators.ViewIDs
+import com.ebc.cupcakemaker.enumerators.ViewModelIDs
 import com.ebc.cupcakemaker.staticdata.DataSource
 import com.ebc.cupcakemaker.view.components.CustomSpacer
 import com.ebc.cupcakemaker.view.components.TitleMedium
@@ -65,13 +64,19 @@ fun StartOrderScreen(navController: NavController,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ){
-            quantityOptions.forEach{
+            quantityOptions.forEach{option ->
                 Button(
-                    onClick = {}
+                    onClick = {
+                        cupcakeMakerViewModel.onValue(option.second.toString(), ViewModelIDs.Quantity.id)
+                        navController.navigate(ViewIDs.Flavors.id)
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text ( text = "Click")
+                    Text ( text = option.second.toString() + " " + stringResource(option.first))
                 }
             }
         }
     }
 }
+
+
