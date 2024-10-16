@@ -18,7 +18,9 @@
     <string name="coffee">Café</string>
     <string name="cupcake_tag">cupcake(s)</string>
 
-
-
-
+    <!-- txt en SelectFlavorScreen -->
+    <string name="extra_instructions">Otras instrucciones</string>
+    <string name="subtotal">Subtotal: $ %s</string>
+    <string name="cancel">Cancelar</string>
+    <string name="next">Siguiente</string>
 </resources>

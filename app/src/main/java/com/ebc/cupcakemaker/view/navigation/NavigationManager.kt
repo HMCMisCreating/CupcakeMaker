@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
 import com.ebc.cupcakemaker.enumerators.ViewIDs
+import com.ebc.cupcakemaker.view.components.cupcakewizard.SelectDateScreen
 import com.ebc.cupcakemaker.view.components.cupcakewizard.SelectFlavorScreen
 import com.ebc.cupcakemaker.view.components.cupcakewizard.StartOrderScreen
 import com.ebc.cupcakemaker.viewmodel.CupcakeMakerViewModel
@@ -59,6 +60,9 @@ fun NavigationManager(cupcakeMakerViewModel: CupcakeMakerViewModel) {
                 }
             composable (ViewIDs.Flavors.id) {
                 SelectFlavorScreen(navController, cupcakeMakerViewModel)
+            }
+            composable (ViewIDs.SelectDate.id) {
+                SelectDateScreen(navController, cupcakeMakerViewModel)
             }
             }
         }

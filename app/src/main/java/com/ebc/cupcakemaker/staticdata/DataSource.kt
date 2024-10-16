@@ -8,8 +8,9 @@ object DataSource {
         R.string.vanilla,
         R.string.red_velvet,
         R.string.lemon,
-        R.string.coffee
-
+        R.string.coffee,
+        R.string.chocolate,
+        R.string.strawberry
 
     )
 
