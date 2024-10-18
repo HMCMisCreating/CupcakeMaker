@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,31 +60,31 @@ fun OrderSummaryScreen (navController: NavController,
                     + " "+ stringResource(R.string.cupcake_tag),
                 fontWeight = FontWeight.Bold
                 )
-            HorizontalDivider(thickness = 1.dp,Modifier)
+            HorizontalDivider(  thickness = 1.dp)
             //--------------------------------------------------------------
             Text(stringResource(R.string.flavor).uppercase())
             Text(text = cupcakeMakerViewModel.state.flavor,
                 fontWeight = FontWeight.Bold
             )
-            HorizontalDivider(thickness = 1.dp,Modifier)
+            HorizontalDivider(  thickness = 1.dp)
             //-------------------------------------------------------------
             Text(stringResource(R.string.pickup_date).uppercase())
             Text(text = cupcakeMakerViewModel.state.pickupDate,
                 fontWeight = FontWeight.Bold
             )
-            HorizontalDivider(thickness = 1.dp,Modifier)
+            HorizontalDivider(  thickness = 1.dp)
             //-------------------------------------------------------------
             Text(stringResource(R.string.pickup_instructions).uppercase())
             Text(text = cupcakeMakerViewModel.state.pickupInstructions,
                 fontWeight = FontWeight.Bold
             )
-            HorizontalDivider(thickness = 1.dp,Modifier)
+            HorizontalDivider(  thickness = 1.dp)
             //-------------------------------------------------------------
             Text(stringResource(R.string.extra_instructions).uppercase())
             Text(text = cupcakeMakerViewModel.state.extraInstructions,
                 fontWeight = FontWeight.Bold
             )
-            HorizontalDivider(thickness = 1.dp,Modifier)
+            HorizontalDivider(  thickness = 1.dp)
             //-------------------------------------------------------------
             Text(text = stringResource(R.string.subtotal,
                 cupcakeMakerViewModel.state.total),
