@@ -17,14 +17,14 @@ class CupcakeMakerViewModel: ViewModel() {
     // Opciones disponibles: flavor, quantity, price, pickupdate, extrainstructions, pickupinstructions
     fun onValue(value:String, textId:String) {
         when (textId) {
-            ViewModelIDs.Flavor.id -> state = state.copy(flavor = value);
+            ViewModelIDs.Flavor.id -> state = state.copy(flavor = value)
             ViewModelIDs.Quantity.id -> {
                 state = state.copy(quantity = value.toInt())
-                calculateTotalAmount();
+                calculateTotalAmount()
             }
             ViewModelIDs.Price.id -> {
-                state = state.copy(price = value.toDouble());
-                calculateTotalAmount();
+                state = state.copy(price = value.toDouble())
+                calculateTotalAmount()
             }
             ViewModelIDs.PickUpDate.id -> state= state.copy(pickupDate = value)
             ViewModelIDs.ExtraInstructions.id -> state= state.copy(extraInstructions = value)
@@ -36,9 +36,9 @@ class CupcakeMakerViewModel: ViewModel() {
 
     //fx para calcular total de la orden
     private fun calculateTotalAmount() {
-        val quantity = state.quantity;
-        val price = state.price;
-        val total = quantity * price;
+        val quantity = state.quantity
+        val price = state.price
+        val total = quantity * price
 
         state = state.copy(total = total)
 

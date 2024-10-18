@@ -23,4 +23,15 @@
     <string name="subtotal">Subtotal: $ %s</string>
     <string name="cancel">Cancelar</string>
     <string name="next">Siguiente</string>
+
+    <!-- txt en SelectDateScreen -->
+    <string name="pickup_instructions">Instrucciones de recolección:</string>
+
+    <!-- txt en OrderSummaryScreen -->
+    <string name="quantity">Cantidad:</string>
+    <string name="flavor">Sabor:</string>
+    <string name="pickup_date">Fecha de recolección:</string>
+    <string name="share">Enviar a otra app</string>
+    <string name="send">Enviar orden</string>
+
 </resources>

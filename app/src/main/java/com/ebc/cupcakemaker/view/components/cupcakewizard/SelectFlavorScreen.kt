@@ -121,7 +121,6 @@ fun SelectFlavorScreen ( navController: NavController,
                 enabled = cupcakeMakerViewModel.state.flavor.isNotEmpty()
             ) {
                 Text (stringResource(R.string.next))
-
             }
         }
     }
