@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ebc.cupcakemaker.R
+import com.ebc.cupcakemaker.enumerators.ViewIDs
 import com.ebc.cupcakemaker.viewmodel.CupcakeMakerViewModel
 
 private fun shareOrder(context: Context, title: String, subject: String, summary: String) {
@@ -46,6 +47,17 @@ fun OrderSummaryScreen (navController: NavController,
     //Text ("Placeholder order summaryy ")
     val context = LocalContext.current
     //val resources = context.resources
+
+    val subject = stringResource(R.string.new_order)
+    val title = stringResource(R.string.final_order)
+    val summary = cupcakeMakerViewModel.state.quantity.toString() +
+            " "+ stringResource(R.string.cupcake_tag) + "\n" +
+            stringResource(R.string.flavor) + " " + cupcakeMakerViewModel.state.flavor +
+            "\n" + stringResource(R.string.pickup_date) + " " + cupcakeMakerViewModel.state.pickupDate +
+            "\n" + stringResource(R.string.pickup_instructions) + " " + cupcakeMakerViewModel.state.pickupInstructions +
+            "\n" + stringResource(R.string.extra_instructions) + " " + cupcakeMakerViewModel.state.extraInstructions +
+            "\n" + stringResource(R.string.subtotal, cupcakeMakerViewModel.state.total)
+
 
     Column (
         modifier = Modifier.fillMaxSize(),
@@ -97,16 +109,18 @@ fun OrderSummaryScreen (navController: NavController,
                     modifier = Modifier.fillMaxWidth(),
                     onClick = {
                         shareOrder(context,
-                            "Orden final",
-                            "Nueva Orden",
-                            "Resumen")
+                            title,
+                            subject,
+                            summary )
                     }
                 ) {
                     Text(stringResource(R.string.share))
                 }
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(ViewIDs.FinishOrder.id)
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF07d800)
                     )
