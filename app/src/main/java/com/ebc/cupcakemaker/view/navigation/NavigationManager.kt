@@ -1,6 +1,9 @@
 package com.ebc.cupcakemaker.view.navigation
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,6 +24,8 @@ import com.ebc.cupcakemaker.view.components.cupcakewizard.OrderSummaryScreen
 import com.ebc.cupcakemaker.view.components.cupcakewizard.SelectDateScreen
 import com.ebc.cupcakemaker.view.components.cupcakewizard.SelectFlavorScreen
 import com.ebc.cupcakemaker.view.components.cupcakewizard.StartOrderScreen
+import com.ebc.cupcakemaker.view.components.onboarding.MainOnboarding
+import com.ebc.cupcakemaker.view.components.splash.SplashScreen
 import com.ebc.cupcakemaker.viewmodel.CupcakeMakerViewModel
 
 // Crear función para el topbar
@@ -29,7 +34,7 @@ import com.ebc.cupcakemaker.viewmodel.CupcakeMakerViewModel
 @Composable
 fun CupcakeAppBar(currentScreen: ViewIDs) {
     CenterAlignedTopAppBar(
-        title = { Text(currentScreen.id)},
+        title = { Text(currentScreen.tag)},
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
         )
@@ -42,7 +47,7 @@ fun CupcakeAppBar(currentScreen: ViewIDs) {
 // Crear el nav manager
 @Composable
 fun NavigationManager(cupcakeMakerViewModel: CupcakeMakerViewModel) {
-    val navController = rememberNavController();
+    val navController = rememberNavController()
 
     val backStackEntry by navController.currentBackStackEntryAsState()
 
@@ -51,19 +56,33 @@ fun NavigationManager(cupcakeMakerViewModel: CupcakeMakerViewModel) {
     )
 
     Scaffold(
-        topBar = {CupcakeAppBar(currentScreen)},
-        bottomBar = {Text(text = "I'm the bottom container")}
+        topBar = {
+            if(currentScreen !in listOf(ViewIDs.Splash,ViewIDs.Home, ViewIDs.FinishOrder)) {
+            CupcakeAppBar(currentScreen)
+            }
+                 },
+        bottomBar = {
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ){
+                Text (text= "Cupcake Maker 1.0")
+            }
+        }
 
     ) {
         NavHost(
             navController = navController,
-            startDestination = ViewIDs.Start.id,
+            startDestination = ViewIDs.Splash.id,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
         ) {
+            composable(ViewIDs.Splash.id) {
+               SplashScreen(navController)
+        }
             composable(ViewIDs.Home.id) {
-                Text(text = "Placeholder Home")
+                MainOnboarding(navController)
             }
             composable (ViewIDs.Start.id) {
                 StartOrderScreen(navController, cupcakeMakerViewModel)
